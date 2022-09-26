@@ -1,0 +1,199 @@
+.main {
+  width: 100%;
+  height: 100%;
+}
+.container {
+  height: auto;
+  background-color: black;
+}
+.synopsis {
+  text-align: left;
+}
+.anime_content {
+  height: auto;
+  width: auto;
+  margin-top: 5rem;
+  padding-bottom: 4rem;
+}
+.anime_card {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  border: none;
+  height: 30rem;
+  overflow: hidden;
+}
+.anime_card_content {
+  width: 100%;
+  height: 17%;
+  padding: 0.5rem;
+  backdrop-filter: blur(3px) saturate(180%);
+  -webkit-backdrop-filter: blur(3px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.75);
+  border-radius: 0px;
+  /* border: 1px solid rgba(255, 255, 255, 0.125); */
+  position: relative;
+  bottom: 0%;
+  top: 80%;
+  color: whitesmoke;
+  text-align: left;
+}
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.drawer-button:before {
+  animation: opacityFallbackOut 0.5s step-end forwards;
+  backface-visibility: hidden;
+  background-color: #fca311;
+  clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: translateZ(0);
+  transition: clip-path 0.5s cubic-bezier(0.165, 0.84, 0.44, 1),
+    -webkit-clip-path 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  width: 100%;
+}
+.drawer-button:hover:before {
+  animation: opacityFallbackIn 0s step-start forwards;
+  clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+}
+.drawer-button:after {
+  background-color: #ffffff;
+}
+.drawer-button span {
+  z-index: 1;
+  position: relative;
+}
+/* 
+
+<div
+                className="anime_card"
+                style={{
+                  backgroundImage: `url(${anime.images.jpg.image_url})`,
+                }}
+              >
+                <div
+                  style={{
+                    width: "85%",
+                    height: "20%",
+                    position: "relative",
+                    marginTop: "auto",
+                    marginBottom: "0.5rem",
+                    backdropFilter: "blur(4px) saturate(180%)",
+                    webkitBackdropFilter: "blur(4px) saturate(180%)",
+                    backgroundColor: "rgba(17, 25, 40, 0.75)",
+                    borderRadius: "15px",
+                    border: "1px solid rgba(255, 255, 255, 0.125)",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <span
+                    style={{
+                      position: "absolute",
+                      marginTop: "auto",
+                      marginBottom: "auto",
+                      textAlign: "left",
+                      color: "white",
+                      fontWeight: "bold",
+                      fontSize: "0.8rem",
+                      padding: "0.5rem",
+                    }}
+                  >
+                    {anime.title}
+                  </span>
+                </div>
+              </div>
+
+
+
+
+
+
+
+import React, { useCallback, useEffect, useState } from "react";
+import axios from "axios";
+//swiper
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "./style.css";
+import { Box } from "@mui/system";
+import { drawerWidth } from "../components/NavigationDrawer";
+import LoadingAnimation from "../resources/anime_loading.gif";
+import { Button, Grid } from "@mui/material";
+
+export const NewAnimePage = () => {
+  const [mostPopularList, setMostPopularList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const getMostPopular = useCallback(async () => {
+    const config = {
+      params: {
+        order_by: "start_date",
+      },
+    };
+    setIsLoading(true);
+    const response = await axios.get("https://api.jikan.moe/v4/anime", config);
+    setMostPopularList(response.data.data);
+
+    setIsLoading(false);
+  }, []);
+
+  useEffect(() => {
+    getMostPopular();
+    console.log(mostPopularList);
+  }, [getMostPopular]);
+
+  return (
+    <div
+      className="most_popular_section"
+      style={{
+        display: "flex",
+        alignItems: "center",
+        marginLeft: `${drawerWidth}px`,
+        height: "100vh",
+      }}
+    >
+      <div style={{ dsplay: "flex", flexDirection: "column", width: "100%" }}>
+        <Button className="see_more_button" variant="text">See all</Button>
+       
+        {isLoading ? (
+          <div className="loading">
+            <img
+              style={{ width: "20rem" }}
+              src={LoadingAnimation}
+              alt="Loading..."
+            />
+          </div>
+        ) : (
+                  
+    
+            
+            <div className="anime_content">
+              <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                {mostPopularList.map((anime) => (
+                  
+                )}
+      </Grid>
+            </div>
+      
+      
+        )
+        }
+          
+        
+      
+      </div>
+    </div>
+  );
+};
+
+
+
+*/

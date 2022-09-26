@@ -1,3 +1,5 @@
 //the routes for all the screens
-export const HOME = "/";
-export const MANGAPAGE = "/mangapage";
+export const NEW = "/";
+export const TRENDING = "/trending";
+export const GENRE = "/genres";
+export const SEARCH = "/search";

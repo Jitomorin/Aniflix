@@ -20,11 +20,11 @@ export const MostPopularList = () => {
     setMostPopularList(response.data.data);
 
     setIsLoading(false);
-    console.log(mostPopularList);
   }, []);
 
   useEffect(() => {
     getMostPopular();
+    console.log(mostPopularList);
   }, [getMostPopular]);
 
   return (
@@ -60,9 +60,7 @@ export const MostPopularList = () => {
                         fontSize: "0.8rem",
                         fontWeight: "bold",
 
-                        // "&:hover": {
-                        //   color: "black",
-                        // },
+
                       }}
                     >
                       <span className="fa fa-chevron-right">Watch</span>
