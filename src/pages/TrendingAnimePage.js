@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
+import { OnePieceLoadingAnimation } from "../components/LoadingAnimation";
+import Pagination from "@mui/material/Pagination";
 //swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -7,9 +9,8 @@ import "./style.css";
 import { drawerWidth } from "../components/NavigationDrawer";
 import { Grid, Tooltip } from "@mui/material";
 // import required modules
-import { Pagination } from "swiper";
+import { Pagination as Page } from "swiper";
 import { AnimeSlider } from "../components/AnimeSlider";
-import { OnePieceLoadingAnimation } from "../components/LoadingAnimation";
 
 export const TrendingAnimePage = () => {
   const [newAnimeList, setNewAnimeList] = useState([]);
@@ -48,7 +49,7 @@ export const TrendingAnimePage = () => {
       ) : (
         <div>
           <div className="slider_section">
-            <Swiper pagination={true} modules={[Pagination]}>
+            <Swiper pagination={true} modules={[Page]}>
               {newAnimeList.map((anime) => (
                 <SwiperSlide key={anime.mal_id}>
                   <AnimeSlider
@@ -90,16 +91,26 @@ export const TrendingAnimePage = () => {
                 </Grid>
               ))}
             </Grid>
+            <div
+              style={{
+                color: "#fca311",
+                display: "flex",
+                justifyContent: "center",
+                height: "auto",
+                marginTop: "1rem",
+              }}
+            >
+              {/* <Pagination
+                sx={{ color: "#fca311" }}
+                count={100}
+                color="primary"
+                page={page}
+                onChange={(event, value) => setPage(value)}
+              /> */}
+            </div>
           </div>
         </div>
       )}
     </div>
   );
 };
-{
-  /* <AnimeCard
-  image_url={anime.images.webp.large_image_url}
-  title={anime.title}
-  synopsis={anime.synopsis}
-/>; */
-}
