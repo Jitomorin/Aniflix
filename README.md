@@ -1,5 +1,5 @@
-# manga_app
- anime app that lets you query for anime. made with Jikan API
+# anime app that lets you query for anime. made with Jikan API
+ 
  
  
  Made with [MUI](https://mui.com/)
